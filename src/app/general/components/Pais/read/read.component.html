@@ -1,0 +1,62 @@
+<div class=" content">
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-10">
+        <h3 class="card-title">Paises</h3>
+      </div>
+      <div class="col-md-2">
+        <button type="button" (click)="PaisAgregar()" rel="tooltip" class="btn btn-success btn-sm btn-round btn-icon btn float-right">
+          <i class="tim-icons icon-simple-add"></i>
+        </button>
+      </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="card-body">
+      <input type="text" class="form-control form-control-sm" placeholder="Digite el texto a buscar..." style="width: 300px;"
+        [(ngModel)]="textoBusqueda" />
+    </div>
+    <table class="table table-borderless form-control-sm table-sm" style="width: 100%;" scrollY="true">
+      <thead>
+        <tr>
+        </tr>
+        <tr>
+
+          <th>Codigo</th>
+          <th>Nombre</th>
+          <th>Iso2</th>
+          <th>Iso3</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody class="tbody">
+        <tr *ngFor="let pais of paises | paisFilter:textoBusqueda; let i = index">
+          <td class="filterable-cell">
+            {{ pais.codigo }}
+          </td>
+          <td>
+            {{ pais.nombrePais }}
+          </td>
+          <td>
+            {{ pais.iso2 }}
+          </td>
+          <td>
+            {{ pais.iso3 }}
+          </td>
+          <td>
+            <button type="button" (click)="PaisActualizar(pais.id)" rel="tooltip"
+              class="btn btn-info btn-sm btn-round btn-icon">
+              <i class="tim-icons icon-pencil"></i>
+            </button>
+            <button type="button" (click)="open(pais)" rel="tooltip" class="btn btn-danger btn-sm btn-round btn-icon">
+              <i class="tim-icons icon-simple-remove"></i>
+            </button>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
